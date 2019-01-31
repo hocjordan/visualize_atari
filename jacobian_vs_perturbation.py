@@ -14,7 +14,7 @@ from __future__ import print_function
 import warnings ; warnings.filterwarnings('ignore') # mute warnings, live dangerously
 
 import matplotlib.pyplot as plt
-import matplotlib as mpl ; mpl.use("Agg")
+import matplotlib as mpl# ; #mpl.use("Qt4Agg")
 import matplotlib.animation as manimation
 
 import torch
@@ -27,7 +27,7 @@ from visualize_atari import *
 
 """## Load agent, build environment, play an episode"""
 
-env_name = 'Breakout-v0'
+env_name = 'Pong-v0'
 save_dir = 'figures/'
 
 print("set up dir variables and environment...")
@@ -58,7 +58,7 @@ def jacobian(model, layer, top_dh, X):
     _ = model(X) # do a forward pass so the forward hooks can be called
 
     # backprop positive signal
-    torch.autograd.backward(top_h_, top_dh.clone(), retain_variables=True) # backward hooks are called here
+    torch.autograd.backward(top_h_, top_dh.clone(), retain_graph=True) # backward hooks are called here
     hook1.remove()
     return X[0].grad.data.clone().numpy(), X[0].data.clone().numpy()
 
@@ -97,7 +97,7 @@ frame = saliency_on_atari_frame(actor_saliency, frame, fudge_factor=200, channel
 perturbation_map = saliency_on_atari_frame(critic_saliency, frame, fudge_factor=100, channel=0)
 
 """## Plot side-by-side"""
-
+print('Check')
 f = plt.figure(figsize=[11, 5*1.3], dpi=75)
 
 plt.subplot(1,2,1)
