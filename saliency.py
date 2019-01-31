@@ -46,7 +46,7 @@ def score_frame(model, history, ix, r, d, interp_func, mode='actor'):
         for j in range(0,80,d):
             mask = get_mask(center=[i,j], size=[80,80], r=r)
             l = run_through_model(model, history, ix, interp_func, mask=mask, mode=mode)
-            scores[int(i/d),int(j/d)] = (L-l).pow(2).sum().mul_(.5).data[0].item()
+            scores[int(i/d),int(j/d)] = (L-l).pow(2).sum().mul_(.5).data.item()
     pmax = scores.max()
     scores = imresize(scores, size=[80,80], interp='bilinear').astype(np.float32)
     return pmax * scores / scores.max()
