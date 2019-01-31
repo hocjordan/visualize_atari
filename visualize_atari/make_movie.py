@@ -4,7 +4,7 @@ from __future__ import print_function
 import warnings ; warnings.filterwarnings('ignore') # mute warnings, live dangerously
 
 import matplotlib.pyplot as plt
-import matplotlib as mpl ; mpl.use("Agg")
+import matplotlib as mpl ;# mpl.use("Agg")
 import matplotlib.animation as manimation
 
 import gym, os, sys, time, argparse
