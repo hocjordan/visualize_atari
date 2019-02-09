@@ -97,7 +97,6 @@ frame = saliency_on_atari_frame(actor_saliency, frame, fudge_factor=200, channel
 perturbation_map = saliency_on_atari_frame(critic_saliency, frame, fudge_factor=100, channel=0)
 
 """## Plot side-by-side"""
-print('Check')
 f = plt.figure(figsize=[11, 5*1.3], dpi=75)
 
 plt.subplot(1,2,1)
