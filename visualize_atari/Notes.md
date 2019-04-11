@@ -41,7 +41,7 @@ Used for calculating Jacobian saliencies. Uses forward and backward 'hooks' and 
 
 ### hx, cx
 
-Part of history, part of model. Might be LSTM activation and memory variables respectively. 
+Part of history, part of model. Might be LSTM activation and memory variables respectively. (Actually I think it's just height and with of the image.)
 
 ### top_dh_actor, top_dh_critic
 
